@@ -1,4 +1,4 @@
-package com.digitalrepublic.model.entities;
+package com.digitalrepublic.codechallenge.model.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
