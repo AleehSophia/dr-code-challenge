@@ -10,13 +10,17 @@ public class AccountDTO implements Serializable {
     private Long id;
     private String name;
     private String cpf;
+    private Double balance;
+    private Double deposit;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, String name, String cpf) {
+    public AccountDTO(Long id, String name, String cpf, Double balance, Double deposit) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.balance = balance;
+        this.deposit = deposit;
     }
 
     public AccountDTO(Account entity) {
@@ -51,5 +55,21 @@ public class AccountDTO implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
     }
 }

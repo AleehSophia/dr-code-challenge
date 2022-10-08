@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,13 +17,22 @@ public class Account {
     private Long id;
     private String name;
     private String cpf;
+    private Double balance;
+    private Double deposit;
+    
+    @ManyToOne
+    @JoinColumn(name = "transfer_id")
+    private MoneyTransfer moneyTransfer;
 
     public Account() {}
 
-    public Account(Long id, String name, String cpf) {
+    public Account(Long id, String name, String cpf, Double balance, Double deposit, MoneyTransfer moneyTransfer) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.balance = balance;
+        this.deposit = deposit;
+        this.moneyTransfer = moneyTransfer;
     }
 
     public Long getId() {
@@ -46,6 +57,30 @@ public class Account {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
+    }
+
+    public MoneyTransfer getMoneyTransfer() {
+        return moneyTransfer;
+    }
+
+    public void setMoneyTransfer(MoneyTransfer moneyTransfer) {
+        this.moneyTransfer = moneyTransfer;
     }
 
     @Override
