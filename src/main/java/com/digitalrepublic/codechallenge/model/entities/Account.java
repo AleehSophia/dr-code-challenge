@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_name")
+@Table(name = "tb_account")
 public class Account {
     
     @Id
@@ -18,7 +18,10 @@ public class Account {
     private String name;
     private String cpf;
     private Double balance;
-    private Double deposit;
+    
+    @ManyToOne
+    @JoinColumn(name = "deposit_id")
+    private Deposit deposit;
     
     @ManyToOne
     @JoinColumn(name = "transfer_id")
@@ -26,7 +29,7 @@ public class Account {
 
     public Account() {}
 
-    public Account(Long id, String name, String cpf, Double balance, Double deposit, MoneyTransfer moneyTransfer) {
+    public Account(Long id, String name, String cpf, Double balance, Deposit deposit, MoneyTransfer moneyTransfer) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -67,11 +70,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public Double getDeposit() {
+    public Deposit getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(Double deposit) {
+    public void setDeposit(Deposit deposit) {
         this.deposit = deposit;
     }
 
