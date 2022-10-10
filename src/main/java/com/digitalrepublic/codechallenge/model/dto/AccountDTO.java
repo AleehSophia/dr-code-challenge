@@ -10,22 +10,21 @@ public class AccountDTO implements Serializable {
 
     private Long id;
     private Double balance;
+    private Integer number;
     private Client client;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, Double balance) {
+    public AccountDTO(Long id, Double balance, Integer number) {
         this.id = id;
         this.balance = balance;
+        this.number = number;
     }
 
     public AccountDTO(Account entity) {
         this.id = entity.getId();
         this.balance = entity.getBalance();
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
+        this.number = entity.getNumber();
     }
 
     public Long getId() {
@@ -50,5 +49,13 @@ public class AccountDTO implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
-    }   
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
 }

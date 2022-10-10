@@ -16,6 +16,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private Integer number;
     private Double balance;
     
     @ManyToOne
@@ -32,9 +33,10 @@ public class Account {
 
     public Account() {}
 
-    public Account(Long id, Double balance, Deposit deposit, MoneyTransfer moneyTransfer, Client client) {
+    public Account(Long id, Double balance, Integer number, Deposit deposit, MoneyTransfer moneyTransfer, Client client) {
         this.id = id;
         this.balance = balance;
+        this.number = number;
         this.client = client;
         this.deposit = deposit;
         this.moneyTransfer = moneyTransfer;
@@ -50,6 +52,14 @@ public class Account {
 
     public Double getBalance() {
         return balance;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public void setBalance(Double balance) {
