@@ -15,10 +15,13 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String cpf;
+    
     private Double balance;
     
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
     @ManyToOne
     @JoinColumn(name = "deposit_id")
     private Deposit deposit;
@@ -29,11 +32,10 @@ public class Account {
 
     public Account() {}
 
-    public Account(Long id, String name, String cpf, Double balance, Deposit deposit, MoneyTransfer moneyTransfer) {
+    public Account(Long id, Double balance, Deposit deposit, MoneyTransfer moneyTransfer, Client client) {
         this.id = id;
-        this.name = name;
-        this.cpf = cpf;
         this.balance = balance;
+        this.client = client;
         this.deposit = deposit;
         this.moneyTransfer = moneyTransfer;
     }
@@ -46,28 +48,20 @@ public class Account {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public Double getBalance() {
         return balance;
     }
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Deposit getDeposit() {

@@ -3,30 +3,25 @@ package com.digitalrepublic.codechallenge.model.dto;
 import java.io.Serializable;
 
 import com.digitalrepublic.codechallenge.model.entities.Account;
+import com.digitalrepublic.codechallenge.model.entities.Client;
 
 public class AccountDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String name;
-    private String cpf;
     private Double balance;
-    private Double deposit;
+    private Client client;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, String name, String cpf, Double balance, Double deposit) {
+    public AccountDTO(Long id, Double balance) {
         this.id = id;
-        this.name = name;
-        this.cpf = cpf;
         this.balance = balance;
-        this.deposit = deposit;
     }
 
     public AccountDTO(Account entity) {
-        id = entity.getId();
-        name = entity.getName();
-        cpf = entity.getCpf();
+        this.id = entity.getId();
+        this.balance = entity.getBalance();
     }
 
     public static long getSerialversionuid() {
@@ -41,22 +36,6 @@ public class AccountDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public Double getBalance() {
         return balance;
     }
@@ -65,11 +44,11 @@ public class AccountDTO implements Serializable {
         this.balance = balance;
     }
 
-    public Double getDeposit() {
-        return deposit;
+    public Client getClient() {
+        return client;
     }
 
-    public void setDeposit(Double deposit) {
-        this.deposit = deposit;
-    }
+    public void setClient(Client client) {
+        this.client = client;
+    }   
 }
