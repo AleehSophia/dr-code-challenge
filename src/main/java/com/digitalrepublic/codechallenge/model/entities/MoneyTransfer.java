@@ -16,8 +16,8 @@ public class MoneyTransfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long accountIdFrom;
-    private Long accountIdTo;
+    
+    private Integer accountNumber;
     private Double amount;
     
     @Column (columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -25,10 +25,9 @@ public class MoneyTransfer {
     
     public MoneyTransfer() {}
 
-    public MoneyTransfer(Long id, Long accountIdFrom, Long accountIdTo, Double amount, Instant transferDate) {
+    public MoneyTransfer(Long id, Integer accountNumber, Double amount, Instant transferDate) {
         this.id = id;
-        this.accountIdFrom = accountIdFrom;
-        this.accountIdTo = accountIdTo;
+        this.accountNumber = accountNumber;
         this.amount = amount;
         this.transferDate = transferDate;
     }
@@ -41,20 +40,12 @@ public class MoneyTransfer {
         this.id = id;
     }
 
-    public Long getAccountIdFrom() {
-        return accountIdFrom;
+    public Integer getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccountIdFrom(Long accountIdFrom) {
-        this.accountIdFrom = accountIdFrom;
-    }
-
-    public Long getAccountIdTo() {
-        return accountIdTo;
-    }
-
-    public void setAccountIdTo(Long accountIdTo) {
-        this.accountIdTo = accountIdTo;
+    public void setAccountNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public Double getAmount() {
