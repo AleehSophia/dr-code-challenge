@@ -17,16 +17,12 @@ public class Client implements Serializable {
     @Column(name = "cpf", unique = true)
     private String cpf;
 
-    @OneToOne(mappedBy = "client")
-    private Account account;
-
     public Client() {}
 
-    public Client(Long id, String name, String cpf, Account account) {
+    public Client(Long id, String name, String cpf) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
-        this.account = account;
     }
 
     public Long getId() {
@@ -51,13 +47,5 @@ public class Client implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 }

@@ -18,7 +18,7 @@ public class ClientService {
         if (findByCpf(clientDTO) != null) {
             throw new ResourceNotFoundException("Already exists, not acceptable");
         }
-        return clientRepository.save(new Client(null, clientDTO.getName(), clientDTO.getCpf(), clientDTO.getAccount()));
+        return clientRepository.save(new Client(null, clientDTO.getName(), clientDTO.getCpf()));
     }
 
     @Transactional

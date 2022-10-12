@@ -13,21 +13,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer accountNumber;
     private BigDecimal deposit;
     private BigDecimal balance;
-    
-    @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
 
     public Account() {}
 
-    public Account(Long id, BigDecimal balance, Integer accountNumber, BigDecimal deposit, Client client) {
+    public Account(Long id, BigDecimal balance, BigDecimal deposit) {
         this.id = id;
         this.balance = balance;
-        this.accountNumber = accountNumber;
-        this.client = client;
         this.deposit = deposit;
     }
 
@@ -43,24 +36,8 @@ public class Account {
         return balance;
     }
 
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public BigDecimal getDeposit() {
