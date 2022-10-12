@@ -11,34 +11,27 @@ public class MoneyTransferDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private Integer accountNumber;
-    private Integer fromAccountNumber;
-    private Integer toAccountNumber;
+    private Long fromAccountNumber;
+    private Long toAccountNumber;
     private BigDecimal amount;
     private Instant transferDate;
-
-    private Account account;
     
     public MoneyTransferDTO() {}
 
-    public MoneyTransferDTO(Long id, Integer accountNumber, Integer fromAccountNumber, Integer toAccountNumber, BigDecimal amount, Instant transferDate, Account account) {
+    public MoneyTransferDTO(Long id, Long fromAccountNumber, Long toAccountNumber, BigDecimal amount, Instant transferDate) {
         this.id = id;
-        this.accountNumber = accountNumber;
         this.fromAccountNumber = fromAccountNumber;
         this.toAccountNumber = toAccountNumber;
         this.amount = amount;
         this.transferDate = transferDate;
-        this.account = account;
     }
 
     public MoneyTransferDTO(MoneyTransfer entity) {
         this.id = entity.getId();
-        this.accountNumber = entity.getAccountNumber();
         this.fromAccountNumber = entity.getFromAccountNumber();
         this.toAccountNumber = entity.getToAccountNumber();
         this.amount = entity.getAmount();
         this.transferDate = entity.getTransferDate();
-        this.account = entity.getAccount();
     }
 
     public Long getId() {
@@ -49,27 +42,20 @@ public class MoneyTransferDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
 
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public Integer getFromAccountNumber() {
+    public Long getFromAccountNumber() {
         return fromAccountNumber;
     }
 
-    public void setFromAccountNumber(Integer fromAccountNumber) {
+    public void setFromAccountNumber(Long fromAccountNumber) {
         this.fromAccountNumber = fromAccountNumber;
     }
 
-    public Integer getToAccountNumber() {
+    public Long getToAccountNumber() {
         return toAccountNumber;
     }
 
-    public void setToAccountNumber(Integer toAccountNumber) {
+    public void setToAccountNumber(Long toAccountNumber) {
         this.toAccountNumber = toAccountNumber;
     }
 
@@ -83,14 +69,6 @@ public class MoneyTransferDTO implements Serializable {
 
     public Instant getTransferDate() {
         return transferDate;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public void setTransferDate(Instant transferDate) {

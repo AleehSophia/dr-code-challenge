@@ -12,29 +12,22 @@ public class MoneyTransfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private Integer accountNumber;
-    private Integer fromAccountNumber;
-    private Integer toAccountNumber;
+
+    private Long fromAccountNumber;
+    private Long toAccountNumber;
     private BigDecimal amount;
     
     @Column (columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant transferDate;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
-    
     public MoneyTransfer() {}
 
-    public MoneyTransfer(Long id, Integer accountNumber, Integer fromAccountNumber, Integer toAccountNumber, BigDecimal amount, Instant transferDate, Account account) {
+    public MoneyTransfer(Long id, Long fromAccountNumber, Long toAccountNumber, BigDecimal amount, Instant transferDate) {
         this.id = id;
-        this.accountNumber = accountNumber;
         this.fromAccountNumber = fromAccountNumber;
         this.toAccountNumber = toAccountNumber;
         this.amount = amount;
         this.transferDate = transferDate;
-        this.account = account;
     }
 
     public Long getId() {
@@ -45,27 +38,20 @@ public class MoneyTransfer {
         this.id = id;
     }
 
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
 
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public Integer getFromAccountNumber() {
+    public Long getFromAccountNumber() {
         return fromAccountNumber;
     }
 
-    public void setFromAccountNumber(Integer fromAccountNumber) {
+    public void setFromAccountNumber(Long fromAccountNumber) {
         this.fromAccountNumber = fromAccountNumber;
     }
 
-    public Integer getToAccountNumber() {
+    public Long getToAccountNumber() {
         return toAccountNumber;
     }
 
-    public void setToAccountNumber(Integer toAccountNumber) {
+    public void setToAccountNumber(Long toAccountNumber) {
         this.toAccountNumber = toAccountNumber;
     }
 
@@ -83,14 +69,6 @@ public class MoneyTransfer {
 
     public void setTransferDate(Instant transferDate) {
         this.transferDate = transferDate;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     @Override

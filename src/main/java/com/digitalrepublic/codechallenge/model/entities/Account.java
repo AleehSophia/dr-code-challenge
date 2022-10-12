@@ -12,7 +12,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private Integer accountNumber;
     private BigDecimal deposit;
     private BigDecimal balance;
@@ -20,9 +20,6 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "client_id")
     private Client client;
-    
-    @OneToMany(mappedBy = "account")
-    private List<MoneyTransfer> moneyTransfers;
 
     public Account() {}
 
@@ -72,14 +69,6 @@ public class Account {
 
     public void setDeposit(BigDecimal deposit) {
         this.deposit = deposit;
-    }
-
-    public List<MoneyTransfer> getMoneyTransfers() {
-        return moneyTransfers;
-    }
-
-    public void setMoneyTransfers(List<MoneyTransfer> moneyTransfers) {
-        this.moneyTransfers = moneyTransfers;
     }
 
     @Override
