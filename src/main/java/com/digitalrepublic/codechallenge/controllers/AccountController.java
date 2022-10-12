@@ -18,14 +18,5 @@ import com.digitalrepublic.codechallenge.services.AccountService;
 @RequestMapping(value = "/accounts")
 public class AccountController {
     
-    @Autowired
-    private AccountService accountService;
 
-    @PostMapping
-    public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO dto) {
-        Client newClient = accountService.create(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-        .path("/{id}").buildAndExpand(newClient.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
-    }
 }

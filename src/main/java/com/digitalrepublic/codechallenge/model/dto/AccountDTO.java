@@ -1,6 +1,7 @@
 package com.digitalrepublic.codechallenge.model.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.digitalrepublic.codechallenge.model.entities.Account;
 import com.digitalrepublic.codechallenge.model.entities.Client;
@@ -9,22 +10,24 @@ public class AccountDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private Double balance;
-    private Integer number;
+    private BigDecimal balance;
+    private Integer accountNumber;
     private Client client;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, Double balance, Integer number) {
+    public AccountDTO(Long id, BigDecimal balance, Integer accountNumber, Client client) {
         this.id = id;
         this.balance = balance;
-        this.number = number;
+        this.accountNumber = accountNumber;
+        this.client = client;
     }
 
     public AccountDTO(Account entity) {
         this.id = entity.getId();
         this.balance = entity.getBalance();
-        this.number = entity.getNumber();
+        this.accountNumber = entity.getAccountNumber();
+        this.client = entity.getClient();
     }
 
     public Long getId() {
@@ -35,11 +38,11 @@ public class AccountDTO implements Serializable {
         this.id = id;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -51,11 +54,11 @@ public class AccountDTO implements Serializable {
         this.client = client;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

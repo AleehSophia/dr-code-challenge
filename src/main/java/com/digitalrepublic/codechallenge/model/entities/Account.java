@@ -1,12 +1,9 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_account")
@@ -16,10 +13,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private Integer number;
-    private Double balance;
+    private Integer accountNumber;
+    private BigDecimal balance;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
@@ -27,19 +24,17 @@ public class Account {
     @JoinColumn(name = "deposit_id")
     private Deposit deposit;
     
-    @ManyToOne
-    @JoinColumn(name = "transfer_id")
-    private MoneyTransfer moneyTransfer;
+    @OneToMany(mappedBy = "account")
+    private List<MoneyTransfer> moneyTransfers;
 
     public Account() {}
 
-    public Account(Long id, Double balance, Integer number, Deposit deposit, MoneyTransfer moneyTransfer, Client client) {
+    public Account(Long id, BigDecimal balance, Integer accountNumber, Deposit deposit, Client client) {
         this.id = id;
         this.balance = balance;
-        this.number = number;
+        this.accountNumber = accountNumber;
         this.client = client;
         this.deposit = deposit;
-        this.moneyTransfer = moneyTransfer;
     }
 
     public Long getId() {
@@ -50,19 +45,19 @@ public class Account {
         this.id = id;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setAccountNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -82,12 +77,12 @@ public class Account {
         this.deposit = deposit;
     }
 
-    public MoneyTransfer getMoneyTransfer() {
-        return moneyTransfer;
+    public List<MoneyTransfer> getMoneyTransfers() {
+        return moneyTransfers;
     }
 
-    public void setMoneyTransfer(MoneyTransfer moneyTransfer) {
-        this.moneyTransfer = moneyTransfer;
+    public void setMoneyTransfers(List<MoneyTransfer> moneyTransfers) {
+        this.moneyTransfers = moneyTransfers;
     }
 
     @Override

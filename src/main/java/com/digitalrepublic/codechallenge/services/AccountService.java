@@ -12,23 +12,5 @@ import com.digitalrepublic.codechallenge.services.exceptions.ResourceNotFoundExc
 @Service
 public class AccountService {
     
-    @Autowired
-    private ClientRepository clientRepository;
 
-    @Transactional
-    public Client create(ClientDTO clientDTO) {
-        if (findByCpf(clientDTO) != null) {
-            throw new ResourceNotFoundException("Already exists, not acceptable");
-        }
-        return clientRepository.save(new Client(null, clientDTO.getName(), clientDTO.getCpf()));
-    }
-
-    @Transactional
-    public Client findByCpf(ClientDTO clientDTO) {
-        Client client = clientRepository.findByCpf(clientDTO.getCpf());
-        if(client != null) {
-            return client;
-        }
-        return client;
-    }
 }
