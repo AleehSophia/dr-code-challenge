@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.digitalrepublic.codechallenge.services.exceptions.CantCompleteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +21,17 @@ public class ControllerExceptionHandler {
         error.setTimestamp(Instant.now());
         error.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
         error.setError("This CPF already exists");
+        error.setMessage(e.getMessage());
+        error.setPath(request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(error);
+    }
+
+    @ExceptionHandler(CantCompleteException.class)
+    public ResponseEntity<StandardError> cantComplete(CantCompleteException e, HttpServletRequest request) {
+        StandardError error = new StandardError();
+        error.setTimestamp(Instant.now());
+        error.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
+        error.setError("The value exceeds limit");
         error.setMessage(e.getMessage());
         error.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(error);
