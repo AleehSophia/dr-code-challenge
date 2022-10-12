@@ -2,11 +2,7 @@ package com.digitalrepublic.codechallenge.model.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_client")
@@ -18,14 +14,19 @@ public class Client implements Serializable {
     private Long id;
 
     private String name;
+    @Column(name = "cpf", unique = true)
     private String cpf;
+
+    @OneToOne(mappedBy = "client")
+    private Account account;
 
     public Client() {}
 
-    public Client(Long id, String name, String cpf) {
+    public Client(Long id, String name, String cpf, Account account) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.account = account;
     }
 
     public Long getId() {
@@ -50,5 +51,13 @@ public class Client implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }   
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

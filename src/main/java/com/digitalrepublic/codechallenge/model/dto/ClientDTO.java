@@ -1,8 +1,9 @@
 package com.digitalrepublic.codechallenge.model.dto;
 
-import java.io.Serializable;
-
+import com.digitalrepublic.codechallenge.model.entities.Account;
 import com.digitalrepublic.codechallenge.model.entities.Client;
+
+import java.io.Serializable;
 
 public class ClientDTO implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -10,19 +11,22 @@ public class ClientDTO implements Serializable{
     private Long id;
     private String name;
     private String cpf;
+    private Account account;
 
     public ClientDTO() {}
 
-    public ClientDTO(Long id, String name, String cpf) {
+    public ClientDTO(Long id, String name, String cpf, Account account) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.account = account;
     }
 
     public ClientDTO(Client entity) {
         id = entity.getId();
         name = entity.getName();
         cpf = entity.getCpf();
+        account = entity.getAccount();
     }
 
     public Long getId() {
@@ -47,5 +51,13 @@ public class ClientDTO implements Serializable{
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }   
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
