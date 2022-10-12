@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.digitalrepublic.codechallenge.services.exceptions.BalanceCantCompleteException;
 import com.digitalrepublic.codechallenge.services.exceptions.CantCompleteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,17 @@ public class ControllerExceptionHandler {
         error.setTimestamp(Instant.now());
         error.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
         error.setError("The value exceeds limit");
+        error.setMessage(e.getMessage());
+        error.setPath(request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(error);
+    }
+
+    @ExceptionHandler(BalanceCantCompleteException.class)
+    public ResponseEntity<StandardError> dontHaveEnoughMoney(BalanceCantCompleteException e, HttpServletRequest request) {
+        StandardError error = new StandardError();
+        error.setTimestamp(Instant.now());
+        error.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
+        error.setError("You don't have enough money in your balance");
         error.setMessage(e.getMessage());
         error.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(error);
