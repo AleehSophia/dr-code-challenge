@@ -25,15 +25,18 @@ public class MoneyTransferService {
 
     @Transactional
     public MoneyTransferDTO transferMoney(MoneyTransferDTO dto) {
+//        pega o id da conta que quer que saia o dinheiro, subtrai a quantia e salva
         Account account1 = accountRepository.findById(dto.getFromAccountNumber()).get();
         BigDecimal currentBalance1 = account1.getBalance().subtract(dto.getAmount());
         account1.setBalance(currentBalance1);
         accountRepository.save(account1);
+//        pega o id da conta que recebe o dinheira, adiciona ao saldo e salva
         Account account2 = accountRepository.findById(dto.getToAccountNumber()).get();
         BigDecimal currentBalance2 = account2.getBalance().add(dto.getAmount());
         account2.setBalance(currentBalance2);
         accountRepository.save(account2);
 
+//        manda os dados pra requisição
         MoneyTransfer entity = new MoneyTransfer();
 
         entity.setFromAccountNumber(dto.getFromAccountNumber());
@@ -41,9 +44,12 @@ public class MoneyTransferService {
         entity.setAmount(dto.getAmount());
         entity.setTransferDate(Instant.now());
         moneyTransferRepository.save(entity);
+
+        //        valida se a conta tem saldo pra fazer a transferencia
         if (currentBalance1.doubleValue() < 0.00) {
             throw new BalanceCantCompleteException("You can't have negative balance");
         }
+//        valida se a transferencia é menor que 2000.00
         if(entity.getAmount().doubleValue() > 2000.00) {
             throw new CantCompleteException("You can't transfer more than $ 2000.00");
         }
