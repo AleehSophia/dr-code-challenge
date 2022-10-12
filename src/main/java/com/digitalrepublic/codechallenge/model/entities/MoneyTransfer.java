@@ -1,13 +1,9 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_transfer")
@@ -18,18 +14,27 @@ public class MoneyTransfer {
     private Long id;
     
     private Integer accountNumber;
-    private Double amount;
+    private Integer fromAccountNumber;
+    private Integer toAccountNumber;
+    private BigDecimal amount;
     
     @Column (columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant transferDate;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
     
     public MoneyTransfer() {}
 
-    public MoneyTransfer(Long id, Integer accountNumber, Double amount, Instant transferDate) {
+    public MoneyTransfer(Long id, Integer accountNumber, Integer fromAccountNumber, Integer toAccountNumber, BigDecimal amount, Instant transferDate, Account account) {
         this.id = id;
         this.accountNumber = accountNumber;
+        this.fromAccountNumber = fromAccountNumber;
+        this.toAccountNumber = toAccountNumber;
         this.amount = amount;
         this.transferDate = transferDate;
+        this.account = account;
     }
 
     public Long getId() {
@@ -48,11 +53,27 @@ public class MoneyTransfer {
         this.accountNumber = accountNumber;
     }
 
-    public Double getAmount() {
+    public Integer getFromAccountNumber() {
+        return fromAccountNumber;
+    }
+
+    public void setFromAccountNumber(Integer fromAccountNumber) {
+        this.fromAccountNumber = fromAccountNumber;
+    }
+
+    public Integer getToAccountNumber() {
+        return toAccountNumber;
+    }
+
+    public void setToAccountNumber(Integer toAccountNumber) {
+        this.toAccountNumber = toAccountNumber;
+    }
+
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -62,6 +83,14 @@ public class MoneyTransfer {
 
     public void setTransferDate(Instant transferDate) {
         this.transferDate = transferDate;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
