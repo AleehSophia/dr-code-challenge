@@ -14,22 +14,19 @@ public class Account {
     private Long id;
     
     private Integer accountNumber;
+    private BigDecimal deposit;
     private BigDecimal balance;
     
     @OneToOne
     @JoinColumn(name = "client_id")
     private Client client;
-
-    @ManyToOne
-    @JoinColumn(name = "deposit_id")
-    private Deposit deposit;
     
     @OneToMany(mappedBy = "account")
     private List<MoneyTransfer> moneyTransfers;
 
     public Account() {}
 
-    public Account(Long id, BigDecimal balance, Integer accountNumber, Deposit deposit, Client client) {
+    public Account(Long id, BigDecimal balance, Integer accountNumber, BigDecimal deposit, Client client) {
         this.id = id;
         this.balance = balance;
         this.accountNumber = accountNumber;
@@ -69,11 +66,11 @@ public class Account {
         this.client = client;
     }
 
-    public Deposit getDeposit() {
+    public BigDecimal getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(Deposit deposit) {
+    public void setDeposit(BigDecimal deposit) {
         this.deposit = deposit;
     }
 

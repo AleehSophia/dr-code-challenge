@@ -9,6 +9,7 @@ import com.digitalrepublic.codechallenge.model.entities.MoneyTransfer;
 
 @Repository
 public interface MoneyTransferRepository extends JpaRepository<MoneyTransfer, Long> {
-    
+
+
     List<MoneyTransfer> findByAccountNumberEquals(Integer accountNumber);
 }

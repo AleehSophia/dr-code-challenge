@@ -12,14 +12,16 @@ public class AccountDTO implements Serializable {
     private Long id;
     private BigDecimal balance;
     private Integer accountNumber;
+    private BigDecimal deposit;
     private Client client;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, BigDecimal balance, Integer accountNumber, Client client) {
+    public AccountDTO(Long id, BigDecimal balance, Integer accountNumber, BigDecimal deposit, Client client) {
         this.id = id;
         this.balance = balance;
         this.accountNumber = accountNumber;
+        this.deposit = deposit;
         this.client = client;
     }
 
@@ -28,6 +30,7 @@ public class AccountDTO implements Serializable {
         this.balance = entity.getBalance();
         this.accountNumber = entity.getAccountNumber();
         this.client = entity.getClient();
+        this.deposit = entity.getDeposit();
     }
 
     public Long getId() {
@@ -44,6 +47,14 @@ public class AccountDTO implements Serializable {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    public BigDecimal getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(BigDecimal deposit) {
+        this.deposit = deposit;
     }
 
     public Client getClient() {

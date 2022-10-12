@@ -1,22 +1,24 @@
 package com.digitalrepublic.codechallenge.controllers;
 
-import java.net.URI;
-
+import com.digitalrepublic.codechallenge.model.dto.AccountDTO;
+import com.digitalrepublic.codechallenge.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
-import com.digitalrepublic.codechallenge.model.dto.ClientDTO;
-import com.digitalrepublic.codechallenge.model.entities.Client;
-import com.digitalrepublic.codechallenge.services.AccountService;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping(value = "/accounts")
-public class AccountController {
-    
+public class AccountController implements Serializable {
 
+    @Autowired
+    private AccountService service;
+
+    @PostMapping
+    public ResponseEntity<AccountDTO> deposit(@RequestBody AccountDTO dto) {
+        dto = service.deposit(dto);
+        return ResponseEntity.ok().body(dto);
+    }
 }
