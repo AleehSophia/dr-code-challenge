@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Service
 public class AccountService implements Serializable {
@@ -24,15 +23,6 @@ public class AccountService implements Serializable {
         entity.setClient(dto.getClient());
         accountRepository.save(entity);
 
-        return new AccountDTO(entity);
-    }
-
-    @Transactional
-    public AccountDTO transferMoney(long accountId, long destinyAccountId, BigDecimal amount) {
-        Account entity = new Account();
-        accountRepository.withDraw(accountId, amount);
-        accountRepository.saveBalance(destinyAccountId, amount);
-        accountRepository.save(entity);
         return new AccountDTO(entity);
     }
 }
