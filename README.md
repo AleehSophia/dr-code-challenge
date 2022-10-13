@@ -25,5 +25,44 @@ Rode o projeto na sua IDE.
 
 Para testar use a collection já pronta do Postman
 
+```
+https://www.getpostman.com/collections/3a776fa536bcb5bbdeff
+```
 
+<h2 align="center">
+Requisição Create account
+</h2>
+<div align="center">
+<img width="60%" src="assets/new-client.png">
+<img width="60%" src="assets/error-new-client.png">
+</div>
 
+<h2 align="center">
+Requisição First deposit
+</h2>
+
+#### Atenção:
+Requisições first deposit devem ser feitas apenas com o id de contas
+criadas pelas requisições create account.
+<div align="center">
+<img width="80%" src="assets/new-client.png">
+</div>
+
+<h2 align="center">
+Requisição Deposit
+</h2>
+
+#### Atenção:
+Requisições Account deposit **não** devem ser feitas
+em contas criadas pelo create account pela primeira vez.
+Deve ser utilizada apenas em contas que já possuem saldo.
+<div align="center">
+<img width="80%" src="assets/account-deposit.png">
+</div>
+
+<h2 align="center">
+Requisição de transferências
+</h2>
+<div align="center">
+<img width="80%" src="assets/transfer-money.png">
+</div>
