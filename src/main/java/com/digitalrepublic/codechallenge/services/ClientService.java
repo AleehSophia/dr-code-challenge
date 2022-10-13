@@ -14,11 +14,16 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     @Transactional
-    public Client create(ClientDTO clientDTO) {
+    public ClientDTO create(ClientDTO clientDTO) {
         if (findByCpf(clientDTO) != null) {
             throw new ResourceNotFoundException("Already exists, not acceptable");
         }
-        return clientRepository.save(new Client(null, clientDTO.getName(), clientDTO.getCpf()));
+        Client client = new Client();
+
+        client.setName(clientDTO.getName());
+        client.setCpf(clientDTO.getCpf());
+        clientRepository.save(client);
+        return new ClientDTO(client);
     }
 
     @Transactional
