@@ -1,6 +1,7 @@
 package com.digitalrepublic.codechallenge.services;
 
 import com.digitalrepublic.codechallenge.model.dto.ClientDTO;
+import com.digitalrepublic.codechallenge.model.entities.Account;
 import com.digitalrepublic.codechallenge.model.entities.Client;
 import com.digitalrepublic.codechallenge.model.repositories.ClientRepository;
 import com.digitalrepublic.codechallenge.services.exceptions.ResourceNotFoundException;
@@ -19,9 +20,11 @@ public class ClientService {
             throw new ResourceNotFoundException("Already exists, not acceptable");
         }
         Client client = new Client();
+        Account account = new Account();
 
         client.setName(clientDTO.getName());
         client.setCpf(clientDTO.getCpf());
+        client.setAccount(account);
         clientRepository.save(client);
         return new ClientDTO(client);
     }

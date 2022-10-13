@@ -11,15 +11,13 @@ public class ClientDTO implements Serializable{
     private Long id;
     private String name;
     private String cpf;
-    private Account account;
 
     public ClientDTO() {}
 
-    public ClientDTO(Long id, String name, String cpf, Account account) {
+    public ClientDTO(Long id, String name, String cpf) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
-        this.account = account;
     }
 
     public ClientDTO(Client entity) {
@@ -50,13 +48,5 @@ public class ClientDTO implements Serializable{
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 }

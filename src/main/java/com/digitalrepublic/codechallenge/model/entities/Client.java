@@ -17,6 +17,9 @@ public class Client implements Serializable {
     @Column(name = "cpf", unique = true)
     private String cpf;
 
+    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Account account;
+
     public Client() {}
 
     public Client(Long id, String name, String cpf) {
@@ -43,6 +46,14 @@ public class Client implements Serializable {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void setCpf(String cpf) {

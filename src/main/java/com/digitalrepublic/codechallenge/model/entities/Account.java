@@ -16,6 +16,10 @@ public class Account {
     private BigDecimal deposit;
     private BigDecimal balance;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
     public Account() {}
 
     public Account(Long id, BigDecimal balance, BigDecimal deposit) {
@@ -46,6 +50,14 @@ public class Account {
 
     public void setDeposit(BigDecimal deposit) {
         this.deposit = deposit;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override

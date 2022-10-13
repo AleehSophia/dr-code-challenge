@@ -21,4 +21,10 @@ public class AccountController implements Serializable {
         dto = service.deposit(dto);
         return ResponseEntity.ok().body(dto);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<AccountDTO> firstDeposit(@RequestBody AccountDTO dto) {
+        dto = service.firstDeposit(dto);
+        return ResponseEntity.ok().body(dto);
+    }
 }

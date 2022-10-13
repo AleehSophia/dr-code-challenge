@@ -27,4 +27,15 @@ public class AccountService implements Serializable {
 
         return new AccountDTO(account);
     }
+
+    public AccountDTO firstDeposit(AccountDTO dto) {
+        Account account = accountRepository.findById(dto.getId()).get();
+        account.setDeposit(dto.getDeposit());
+        account.setBalance(dto.getDeposit());
+
+//        BigDecimal deposit = account.getDeposit();
+//        account.setBalance(deposit);
+        accountRepository.save(account);
+        return new AccountDTO(account);
+    }
 }
