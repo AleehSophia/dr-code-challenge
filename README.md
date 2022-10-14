@@ -8,6 +8,7 @@ Conseguem ser realizadas as seguintes operações:
 - É possível realizar transferências para outras contas;
 - É possível depositar em uma conta;
 - O valor das transações não pode ultrapassar R$2000.00;
+- Não é possível ficar com saldo negativo na conta;
 
 <h3 align="center">Como utilizar esse projeto</h3>
 
@@ -97,7 +98,7 @@ Requisição First deposit
 Requisições first deposit devem ser feitas apenas com o id de contas
 criadas pelas requisições create account.
 <div align="center">
-<img width="80%" src="assets/new-client.png">
+<img width="80%" src="assets/first-deposit.png">
 </div>
 
 <h2 align="center">
@@ -117,4 +118,5 @@ Requisição de transferências
 </h2>
 <div align="center">
 <img width="80%" src="assets/transfer-money.png">
+<img width="80%" src="assets/negative-balance.png">
 </div>
