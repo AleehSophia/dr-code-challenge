@@ -1,5 +1,8 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
+import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -14,6 +17,7 @@ public class Account {
     private Long id;
 
     private BigDecimal deposit;
+    @Value("0.0")
     private BigDecimal balance;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

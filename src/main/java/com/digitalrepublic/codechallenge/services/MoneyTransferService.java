@@ -30,15 +30,13 @@ public class MoneyTransferService {
         BigDecimal currentBalance1 = account1.getBalance().subtract(dto.getAmount());
         account1.setBalance(currentBalance1);
         accountRepository.save(account1);
-//        pega o id da conta que recebe o dinheira, adiciona ao saldo e salva
+//        pega o id da conta que recebe o dinheiro, adiciona ao saldo e salva
         Account account2 = accountRepository.findById(dto.getToAccountNumber()).get();
         BigDecimal currentBalance2 = account2.getBalance().add(dto.getAmount());
         account2.setBalance(currentBalance2);
         accountRepository.save(account2);
-
 //        manda os dados pra requisição
         MoneyTransfer entity = new MoneyTransfer();
-
         entity.setFromAccountNumber(dto.getFromAccountNumber());
         entity.setToAccountNumber(dto.getToAccountNumber());
         entity.setAmount(dto.getAmount());
