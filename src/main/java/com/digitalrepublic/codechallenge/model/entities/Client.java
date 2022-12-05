@@ -1,5 +1,6 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -7,17 +8,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_client")
 public class Client implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String name;
     @Column(name = "cpf", unique = true)
     private String cpf;
 
-    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
     private Account account;
 
     public Client() {}

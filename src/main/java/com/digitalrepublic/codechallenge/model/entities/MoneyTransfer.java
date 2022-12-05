@@ -1,5 +1,6 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -7,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_transfer")
-public class MoneyTransfer {
+public class MoneyTransfer implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,27 +1,28 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
-import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tb_account")
-public class Account {
+public class Account implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private BigDecimal deposit;
-    @Value("0.0")
+    @Value(value = "0.0")
     private BigDecimal balance;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
+    @OneToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
     public Account() {}

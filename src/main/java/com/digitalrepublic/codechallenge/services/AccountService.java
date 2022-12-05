@@ -32,6 +32,7 @@ public class AccountService implements Serializable {
         return new AccountDTO(account);
     }
 
+    @Transactional
     public AccountDTO firstDeposit(AccountDTO dto) {
         Account account = accountRepository.findById(dto.getId()).get();
         if (account.getBalance() != null) {
