@@ -1,37 +1,29 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tb_account")
 public class Account implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal deposit;
-    @Value(value = "0.0")
-    private BigDecimal balance;
-
     @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
     private Client client;
 
-    public Account() {}
+    @Column(precision = 2)
+    private Double deposit;
 
-    public Account(Long id, BigDecimal balance, BigDecimal deposit) {
-        this.id = id;
-        this.balance = balance;
-        this.deposit = deposit;
-    }
+    @Column(precision = 2, nullable = false)
+    private Double balance = 0.0;
+
 
     public Long getId() {
         return id;
@@ -39,22 +31,6 @@ public class Account implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public BigDecimal getDeposit() {
-        return deposit;
-    }
-
-    public void setDeposit(BigDecimal deposit) {
-        this.deposit = deposit;
     }
 
     public Client getClient() {
@@ -65,28 +41,20 @@ public class Account implements Serializable {
         this.client = client;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public Double getBalance() {
+        return balance;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Account other = (Account) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
+    }
+
 }

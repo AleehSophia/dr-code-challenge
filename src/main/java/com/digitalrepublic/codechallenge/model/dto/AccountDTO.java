@@ -10,12 +10,12 @@ public class AccountDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private BigDecimal balance;
-    private BigDecimal deposit;
+    private Double balance;
+    private Double deposit;
 
     public AccountDTO() {}
 
-    public AccountDTO(Long id, BigDecimal balance, Integer accountNumber, BigDecimal deposit) {
+    public AccountDTO(Long id, Double balance, Integer accountNumber, Double deposit) {
         this.id = id;
         this.balance = balance;
         this.deposit = deposit;
@@ -35,19 +35,19 @@ public class AccountDTO implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
-    public BigDecimal getDeposit() {
+    public Double getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(BigDecimal deposit) {
+    public void setDeposit(Double deposit) {
         this.deposit = deposit;
     }
 }
