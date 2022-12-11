@@ -13,12 +13,12 @@ public class MoneyTransferDTO implements Serializable {
     private Long id;
     private Long fromAccountNumber;
     private Long toAccountNumber;
-    private BigDecimal amount;
+    private Double amount;
     private Instant transferDate;
     
     public MoneyTransferDTO() {}
 
-    public MoneyTransferDTO(Long id, Long fromAccountNumber, Long toAccountNumber, BigDecimal amount, Instant transferDate) {
+    public MoneyTransferDTO(Long id, Long fromAccountNumber, Long toAccountNumber, Double amount, Instant transferDate) {
         this.id = id;
         this.fromAccountNumber = fromAccountNumber;
         this.toAccountNumber = toAccountNumber;
@@ -59,11 +59,11 @@ public class MoneyTransferDTO implements Serializable {
         this.toAccountNumber = toAccountNumber;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

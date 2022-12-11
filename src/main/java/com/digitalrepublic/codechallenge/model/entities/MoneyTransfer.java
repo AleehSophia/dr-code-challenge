@@ -16,14 +16,16 @@ public class MoneyTransfer implements Serializable {
 
     private Long fromAccountNumber;
     private Long toAccountNumber;
-    private BigDecimal amount;
+
+    @Column(precision = 2)
+    private Double amount;
     
     @Column (columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant transferDate;
 
     public MoneyTransfer() {}
 
-    public MoneyTransfer(Long id, Long fromAccountNumber, Long toAccountNumber, BigDecimal amount, Instant transferDate) {
+    public MoneyTransfer(Long id, Long fromAccountNumber, Long toAccountNumber, Double amount, Instant transferDate) {
         this.id = id;
         this.fromAccountNumber = fromAccountNumber;
         this.toAccountNumber = toAccountNumber;
@@ -56,11 +58,11 @@ public class MoneyTransfer implements Serializable {
         this.toAccountNumber = toAccountNumber;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
