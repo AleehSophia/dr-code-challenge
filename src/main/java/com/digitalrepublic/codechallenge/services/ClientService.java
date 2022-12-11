@@ -19,12 +19,16 @@ public class ClientService {
         if (findByCpf(clientDTO) != null) {
             throw new ResourceNotFoundException("Already exists, not acceptable");
         }
-        Client client = new Client();
-        Account account = new Account();
 
+        Client client = new Client();
+
+        Account account = new Account();
+        account.setClient(client);
+
+        client.setAccount(account);
         client.setName(clientDTO.getName());
         client.setCpf(clientDTO.getCpf());
-        client.setAccount(account);
+
         clientRepository.save(client);
         return new ClientDTO(client);
     }
@@ -32,7 +36,7 @@ public class ClientService {
     @Transactional
     public Client findByCpf(ClientDTO clientDTO) {
         Client client = clientRepository.findByCpf(clientDTO.getCpf());
-        if(client != null) {
+        if (client != null) {
             return client;
         }
         return client;

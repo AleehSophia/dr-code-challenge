@@ -1,9 +1,8 @@
 package com.digitalrepublic.codechallenge.model.entities;
 
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_client")
@@ -51,15 +50,15 @@ public class Client implements Serializable {
         return cpf;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public Account getAccount() {
         return account;
     }
 
     public void setAccount(Account account) {
         this.account = account;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 }
