@@ -56,5 +56,4 @@ public class Account implements Serializable {
     public void setDeposit(Double deposit) {
         this.deposit = deposit;
     }
-
 }
