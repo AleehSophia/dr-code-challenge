@@ -5,6 +5,7 @@
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" width="60px"/>
 </div>
 
+---
 <p>Este projeto é uma REST API de um banco digital. <br>
 <br>
 Conseguem ser realizadas as seguintes operações:
@@ -15,6 +16,13 @@ Conseguem ser realizadas as seguintes operações:
 - É possível depositar em uma conta;
 - O valor das transações não pode ultrapassar R$2000.00;
 - Não é possível ficar com saldo negativo na conta;
+
+---
+<h1 align="center">
+  Diagrama<br>
+  <img src="assets/diagramDrCode.drawio.svg">
+</h1>
+
 ---
 <h1 align="center">Como contribuir?</h1>
 
