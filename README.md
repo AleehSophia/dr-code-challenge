@@ -1,4 +1,4 @@
-<h1 align="center">Digital Republic Challenge</h1>
+<h1 align="center">Account API</h1>
 <div align="center" style="display: inline_block">
     <img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"  width="60px"/>
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" width="50px"/>
@@ -6,7 +6,7 @@
 </div>
 
 ---
-<p>Este projeto é uma REST API de um banco digital. <br>
+<p>Este projeto é uma API REST de um banco digital. <br>
 <br>
 Conseguem ser realizadas as seguintes operações:
 </p>
@@ -26,8 +26,6 @@ Conseguem ser realizadas as seguintes operações:
 ---
 <h1 align="center">Como contribuir?</h1>
 
-- UI - Fique à vontade para fazer a interface, já que esse projeto
-possui apenas o backend.
 - Extrato com todas as transações bancárias referentes a uma conta.
 - Melhoria de documentação.
 - Implementação de segurança e autenticação.
