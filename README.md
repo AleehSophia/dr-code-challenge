@@ -23,21 +23,26 @@ Conseguem ser realizadas as seguintes operações:
   <img src="assets/diagramDrCode.drawio.svg">
 </h1>
 
----
 <h1 align="center">Como contribuir?</h1>
 
 - Extrato com todas as transações bancárias referentes a uma conta.
 - Melhoria de documentação.
 - Implementação de segurança e autenticação.
 
----
+1. Crie um fork. <br>
+2. Crie sua feature branch: `git checkout -b nome`
+3. Adcione os arquivos: `git add`
+4. Faça um commit: `git commit -m "sua mensagem"`
+5. Faça um push na sua branch: `git push origin nome`
+6. Envie um pull request para esse repositório
+
 <h1 align="center">Tecnologias utilizadas</h1>
 
 - Java 17
 - Spring boot 2.7.4
 - H2
 - Postgresql
----
+
   <h3 align="center">Como utilizar esse projeto</h3>
 
   Faça o clone do projeto no terminal, 
