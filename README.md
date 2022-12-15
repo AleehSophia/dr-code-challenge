@@ -28,6 +28,7 @@ Conseguem ser realizadas as seguintes operações:
 - Extrato com todas as transações bancárias referentes a uma conta.
 - Melhoria de documentação.
 - Implementação de segurança e autenticação.
+- Correção de bugs
 
 1. Crie um fork. <br>
 2. Crie sua feature branch: `git checkout -b nome`
